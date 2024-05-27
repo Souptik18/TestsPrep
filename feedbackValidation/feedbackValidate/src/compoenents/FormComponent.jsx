@@ -11,9 +11,24 @@ function FormComponent() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const checkName = /\d/;
-    const checkPhoneRegex = /[a-z]/;
+    const checkPhoneRegex = /[a-zA-Z]/;
+    const checkEmailRegex = /\d/;
+    const pincodeRegex = /[a-zA-Z]/;
     const checkPhone = checkPhoneRegex.test(data.phone);
+    const emailCheck = checkEmailRegex.test(data.email);
     const namechk = checkName.test(data.name);
+    const checkPincode = pincodeRegex.test(data.pincode);
+    if (namechk) {
+      alert("Name cannot contain numbers");
+    } else if (checkPhone) {
+      alert("Phone number cannot contain letters");
+    } else if (emailCheck) {
+      alert("Email should contain @ and `.`");
+    } else if (checkPincode) {
+      alert("Pincode cannot contain letters");
+    } else {
+      console.log("data sent");
+    }
   };
 
   const handleonChange = (e) => {
@@ -44,10 +59,10 @@ function FormComponent() {
         />
         <label htmlFor="email">Email ID</label>
         <input
-          type="email"
+          type="text"
           name="email"
-          id="email"
           required
+          id="email"
           placeholder="Enter Email"
           onChange={handleonChange}
           value={data.email}

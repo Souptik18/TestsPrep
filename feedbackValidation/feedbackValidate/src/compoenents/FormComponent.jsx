@@ -11,12 +11,9 @@ function FormComponent() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const checkName = /\d/;
-    const checkEmail = checkName.test(data.email);
-    const checkPhone = checkName.test(data.phone);
-    const Check = checkName.test(data.name);
-    if (Check) {
-      alert("Name cannot contain numbers");
-    }
+    const checkPhoneRegex = /[a-z]/;
+    const checkPhone = checkPhoneRegex.test(data.phone);
+    const namechk = checkName.test(data.name);
   };
 
   const handleonChange = (e) => {

@@ -12,7 +12,7 @@ function FormComponent() {
     e.preventDefault();
     const checkName = /\d/;
     const checkPhoneRegex = /[a-zA-Z]/;
-    const checkEmailRegex = /\d/;
+    const checkEmailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const pincodeRegex = /[a-zA-Z]/;
     const checkPhone = checkPhoneRegex.test(data.phone);
     const emailCheck = checkEmailRegex.test(data.email);
@@ -22,8 +22,8 @@ function FormComponent() {
       alert("Name cannot contain numbers");
     } else if (checkPhone) {
       alert("Phone number cannot contain letters");
-    } else if (emailCheck) {
-      alert("Email should contain @ and `.`");
+    } else if (!emailCheck) {
+      alert("Email should contain @ and .");
     } else if (checkPincode) {
       alert("Pincode cannot contain letters");
     } else {
